@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  actix-db:
+    container_name: actix-db
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=SOCCERDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - actix-db-vl:/data/postgres
+
+networks:
+  actix-net:
+    driver: bridge
+
+volumes:
+  actix-db-vl:
+    driver: local
